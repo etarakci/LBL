@@ -1,6 +1,7 @@
-
+import msutils.*
 function ms = msCompress(FILENAME)
 	input = readmda(FILENAME)
+	og_input = input
 
 	y = null
 	cname = ''
@@ -9,7 +10,7 @@ function ms = msCompress(FILENAME)
 
 	for c = 0:.5:1
 		//linearity
-		input = input-(sin(input))*c*input^2
+		input = og_input-(sin(og_input))*c*og_input^2
 		cname = num2str(c)
 
 		for f = 32:-2:10
@@ -28,4 +29,7 @@ function ms = msCompress(FILENAME)
 				
 				fname = 'c'+ cname + '_f' + fname + '_b' + bname;
 				ms = writemda(input,fname, )
+			end
+		end
+	end
 end
