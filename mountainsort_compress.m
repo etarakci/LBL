@@ -19,17 +19,20 @@ function ms = msCompress(FILENAME)
 			q = f
 			y = resample(input,p,q)
 			fname = num2str(f)
+            
+            fname = 'c'+ cname + '_f' + fname;
+ 			ms = writemda(input,fname, 'int16')
 
-			for b = 16:-2:8
-				//bit depth
-				p = 16
-				q = b
-				% possibly treat matrix as image-numpy.astype
-				bname = num2str(b) 
-				
-				fname = 'c'+ cname + '_f' + fname + '_b' + bname;
-				ms = writemda(input,fname, )
-			end
+% 			for b = 16:-2:8
+% 				//bit depth
+% 				p = 16
+% 				q = b
+% 				% possibly treat matrix as image-numpy.astype
+% 				bname = num2str(b) 
+% 				
+% 				fname = 'c'+ cname + '_f' + fname + '_b' + bname;
+% 				ms = writemda(input,fname, )
+% 			end
 		end
 	end
 end
