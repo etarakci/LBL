@@ -1,25 +1,24 @@
 % import msutils.*
-
-function [outc0,outc1,outf32, outf30] = mountainsort_compress(FILENAME)
 addpath('/Users/erendiztarakci/documents/MountainLab/LBL/mda_helpers');
-    input = readmda(FILENAME);
+function [outc0,outc1,outf32, outf30] = ms_compress(FILENAME)
+    input = readmda(FILENAME)
 %   input = FILENAME;
 	og_input = input;
-    cname = '';
-    fname = '';
-%     bname = '';
+
+% 	cname = ''
+% 	fname = ''
+% 	bname = ''
 
     for c = 0:.1:.1
 % 		linearity
 %       plot each line together color coded
-%       x: raw file y: non-linear file
 		input = og_input-(sin(og_input))*c*og_input^2;
 % 		cname = num2str(c)
         if c == 0
-            outc0 = writemda16i(input,cname);
+            outc0 = writemda16i(input);
         end 
         if c == .1
-            outc1 = writemda16i(input,cname);
+            outc1 = writemda16i(input);
         end
     end
 
@@ -32,10 +31,10 @@ addpath('/Users/erendiztarakci/documents/MountainLab/LBL/mda_helpers');
         input = resample(og_input,p,q);
 %       fname = num2str(f)
         if f == 32
-            outf32 = writemda16i(input,fname);
+            outf32 = writemda16i(input);
         end
         if f == 30
-            outf30 = writemda16i(input,fname);
+            outf30 = writemda16i(input);
         end
    
 %       ms = writemda(input,fname, 'int16')
